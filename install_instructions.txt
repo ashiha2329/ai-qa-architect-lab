@@ -1,0 +1,78 @@
+On your Windows PC, install:
+In Powershell install these on D: drive
+
+Node.js LTS
+https://nodejs.org/en/download?utm_source=chatgpt.com
+d:\nodejs
+
+
+Git
+https://git-scm.com/download/win?utm_source=chatgpt.com
+d:\Git
+
+
+VS Code
+https://code.visualstudio.com/download?utm_source=chatgpt.com
+d:\Microsoft VS Code
+
+
+Docker Desktop
+https://www.docker.com/products/docker-desktop/?utm_source=chatgpt.com
+D:\
+├── Docker\        ← Docker Desktop application
+└── DockerData\    ← images, containers, volumes, etc.
+
+
+A GitHub account
+username: ashiha2329
+email: ashiha@optonline.net
+pw: pc1243$
+
+check versions
+PS C:\Users\ashih> d:
+PS D:\> cd .\ai-qa-architect-lab\
+PS D:\ai-qa-architect-lab> node --version
+v24.20.0
+PS D:\ai-qa-architect-lab> npm --version
+11.19.0
+PS D:\ai-qa-architect-lab> git --version
+git version 2.55.0.windows.5
+PS D:\ai-qa-architect-lab> docker --version
+Docker version 29.7.2, build a7dcaa6
+PS D:\ai-qa-architect-lab>
+
+Node.js: v24.20.0 ✅
+npm: 11.19.0 ✅
+Git: 2.55.0 ✅
+Docker: 29.7.2 ✅
+
+
+
+In Powershell install PW on D: drive
+
+mkdir ai-qa-architect-lab
+cd ai-qa-architect-lab
+
+npm init playwright@latest
+
+TypeScript:       Yes
+Tests directory:  tests
+GitHub Actions:   Yes
+Install browsers: Yes
+
+Install Allure for Playwright
+cd D:\ai-qa-architect-lab
+npm install --save-dev allure-playwright
+
+install the Allure command-line tool:
+npm install --save-dev allure-commandline
+
+Generate the Allure HTML report
+npx allure generate allure-results --clean -o allure-report
+
+Open Allure report
+npx allure open allure-report
+
+OR generate and serve the repory in one command-line
+npx allure serve allure-results
+
