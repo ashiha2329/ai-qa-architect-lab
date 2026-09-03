@@ -31,7 +31,7 @@ pipeline {
         }
     }
 
-    post {
+   post {
     always {
 
         archiveArtifacts artifacts: 'test-results/**/*',
@@ -49,4 +49,5 @@ pipeline {
             results: [[path: 'allure-results']]
         ])
     }
+}
 }
