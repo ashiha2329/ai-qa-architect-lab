@@ -31,23 +31,22 @@ pipeline {
         }
     }
 
-   post {
-    always {
+    post {
+        always {
+            archiveArtifacts artifacts: 'test-results/**/*',
+                             allowEmptyArchive: true
 
-        archiveArtifacts artifacts: 'test-results/**/*',
-                         allowEmptyArchive: true
+            archiveArtifacts artifacts: 'playwright-report/**/*',
+                             allowEmptyArchive: true
 
-        archiveArtifacts artifacts: 'playwright-report/**/*',
-                         allowEmptyArchive: true
+            archiveArtifacts artifacts: 'allure-results/**/*',
+                             allowEmptyArchive: true
 
-        archiveArtifacts artifacts: 'allure-results/**/*',
-                         allowEmptyArchive: true
-
-        allure([
-            includeProperties: false,
-            jdk: '',
-            results: [[path: 'allure-results']]
-        ])
+            allure([
+                includeProperties: false,
+                jdk: '',
+                results: [[path: 'allure-results']]
+            ])
+        }
     }
-}
 }
