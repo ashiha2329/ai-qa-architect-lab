@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { allure } from 'allure-playwright';
+import * as allure from 'allure-js-commons';
+/* import { allure } from 'allure-playwright'; USE NEWER API*/
 import { customers } from '../test-data/customers';
 /* import { test, expect } from '@playwright/test'; */
 import { LoginPage } from '../pages/LoginPage';
@@ -18,7 +19,7 @@ test.describe('SauceDemo Checkout', () => {
     await allure.severity('critical');
     await allure.owner('QA Automation');
     await allure.tag('smoke');
-    
+
     const loginPage = new LoginPage(page);
     const productsPage = new ProductsPage(page);
     const cartPage = new CartPage(page);

@@ -1,7 +1,14 @@
 services:
   jenkins:
-    image: jenkins/jenkins:lts-jdk21
+    build:
+      context: .
+      dockerfile: Dockerfile.jenkins
+
     container_name: ai-qa-jenkins
+
+    group_add:
+      - "0"
+
     restart: unless-stopped
 
     ports:
@@ -10,6 +17,7 @@ services:
 
     volumes:
       - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
 
 volumes:
   jenkins_home:

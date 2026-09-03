@@ -1,0 +1,84 @@
+✅ First commit created
+✅ Branch renamed from master to main
+✅ Git identity configured
+✅ Working tree clean
+
+
+Use gitignire file to add files/folders not being commited
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+# Allure
+/allure-results/
+/allure-report/
+
+# Dependencies
+/node_modules/
+
+# Environment / secrets
+.env
+
+
+
+#first commit
+git status
+git init
+git add .
+git status
+
+# to remove anything from staging 
+git rm --cached <file>...
+git rm -r --cached test_backup
+
+# Make first commit
+git add .
+git commit -m "Initial AI QA automation framework"
+
+	#If login error
+	"Enter ashiha@optonline.net and ashiha2329
+	  git config --global user.email "you@example.com"
+	  git config --global user.name "Your Name"
+  
+# rename from branch to main  
+git branch -M main
+
+#verify
+git status
+
+	#On branch main
+	#nothing to commit, working tree clean
+
+
+#NEXT Create GitHub repo
+Open GitHub and sign in.
+https://github.com/?utm_source=chatgpt.com
+ashiha2329, pc1243$
+
+Click + → New repository.
+
+Use:
+
+Repository name: ai-qa-architect-lab
+
+Create repo
+
+#Back in VS code
+git remote add origin https://github.com/ashiha2329/ai-qa-architect-lab.git
+
+git remote -v
+
+git push -u origin main
+
+#Verify Docker is running
+
+#powershell - Ensure Docker is running click Sip when prompted for creating account
+
+docker ps
+
+
+
+#CI polling test 
