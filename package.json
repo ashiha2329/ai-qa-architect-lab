@@ -13,5 +13,8 @@
     "@types/node": "^26.4.0",
     "allure-commandline": "^2.43.0",
     "allure-playwright": "^3.11.0"
+  },
+  "dependencies": {
+    "openai": "^7.9.0"
   }
 }

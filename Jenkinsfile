@@ -31,22 +31,34 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            archiveArtifacts artifacts: 'test-results/**/*',
-                             allowEmptyArchive: true
-
-            archiveArtifacts artifacts: 'playwright-report/**/*',
-                             allowEmptyArchive: true
-
-            archiveArtifacts artifacts: 'allure-results/**/*',
-                             allowEmptyArchive: true
-
-            allure([
-                includeProperties: false,
-                jdk: '',
-                results: [[path: 'allure-results']]
-            ])
+post {
+    always {
+        withCredentials([
+            string(
+                credentialsId: 'openai-api-key',
+                variable: 'OPENAI_API_KEY'
+            )
+        ]) {
+            sh 'node scripts/ai-failure-analyzer.js'
         }
+
+        archiveArtifacts artifacts: 'ai-analysis/**/*',
+                         allowEmptyArchive: true
+
+        archiveArtifacts artifacts: 'test-results/**/*',
+                         allowEmptyArchive: true
+
+        archiveArtifacts artifacts: 'playwright-report/**/*',
+                         allowEmptyArchive: true
+
+        archiveArtifacts artifacts: 'allure-results/**/*',
+                         allowEmptyArchive: true
+
+        allure([
+            includeProperties: false,
+            jdk: '',
+            results: [[path: 'allure-results']]
+        ])
     }
+}
 }
