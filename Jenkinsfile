@@ -41,6 +41,11 @@ post {
         ]) {
             sh 'node scripts/ai-failure-analyzer.js'
         }
+        
+        sh '''
+        echo "=== AI Failure Analysis ==="
+        cat ai-analysis/failure-analysis.md
+        '''
 
         archiveArtifacts artifacts: 'ai-analysis/**/*',
                          allowEmptyArchive: true
