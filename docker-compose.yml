@@ -4,8 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile.jenkins
 
-    container_name: ai-qa-jenkins
-
+      container_name: ai-qa-jenkins
+      environment:
+         - TZ=America/New_York
     group_add:
       - "0"
 
