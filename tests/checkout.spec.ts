@@ -60,8 +60,8 @@ test.describe('SauceDemo Checkout', () => {
     await checkoutPage.finishOrder();
 
     await expect(checkoutPage.completeHeader)
- //     .toHaveText('Thank you for your order!');
-        .toHaveText('Order completed successfully!');
+      .toHaveText('Thank you for your order!');
+  //      .toHaveText('Order completed successfully!');
   });
 
 });
