@@ -26,11 +26,15 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright test --project=chromium'
+                withCredentials([string(
+                    credentialsId: 'firstcheck-storefront-password',
+                    variable: 'SHOPIFY_STOREFRONT_PASSWORD'
+                )]) {
+                    sh 'npx playwright test --project=chromium'
+                }
             }
         }
     }
-
 post {
     always {
         withCredentials([
