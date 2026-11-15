@@ -1,16 +1,17 @@
 import { expect, test } from '@playwright/test';
+import { shopifyStore } from '../test-data/shopify-store';
 
 test.use({
-  baseURL: 'https://firstcheck-oj4zwrco.myshopify.com',
+  baseURL: shopifyStore.baseURL,
   trace: 'off',
   video: 'off',
 });
 
-test('FirstCheck carries one ski wax item into checkout', async ({ page }) => {
+test(`${shopifyStore.name} carries ${shopifyStore.expectedProductName} into checkout`, async ({ page }) => {
   const password = process.env.SHOPIFY_STOREFRONT_PASSWORD;
   test.skip(!password, 'Set SHOPIFY_STOREFRONT_PASSWORD to run this test.');
 
-  await page.goto('/products/selling-plans-ski-wax');
+ await page.goto(shopifyStore.productPath);
 
   const passwordField = page.locator('input[type="password"]');
   if (new URL(page.url()).pathname === '/password') {
@@ -23,7 +24,7 @@ test('FirstCheck carries one ski wax item into checkout', async ({ page }) => {
 
     await passwordField.press('Enter');
     await expect(page).not.toHaveURL(/\/password(?:[/?#]|$)/);
-    await page.goto('/products/selling-plans-ski-wax');
+    await page.goto(shopifyStore.productPath);
   }
 
   await page.getByRole('button', { name: /^add to cart$/i }).click();
@@ -40,6 +41,6 @@ test('FirstCheck carries one ski wax item into checkout', async ({ page }) => {
   await page.getByRole('button', { name: 'Check out' }).click();
   await expect(page).toHaveURL(/\/checkouts\//);
   await expect(
-    page.getByText('Selling Plans Ski Wax', { exact: true }).first()
+    page.getByText(shopifyStore.expectedProductName, { exact: true }).first()
   ).toBeVisible();
 });
